@@ -12,6 +12,8 @@ public class Main {
 
         Scanner insereOpcao = new Scanner(System.in);
         int opcao = 0;
+        double saque = 0;
+        double deposito = 0;
 
         String menu = """
                   1 - Verificar Saldo
@@ -24,6 +26,27 @@ public class Main {
         while (opcao != 5) {
             System.out.println(menu);
             opcao = insereOpcao.nextInt();
+            if (opcao == 1){
+                System.out.println(saldo);
+            } else if(opcao == 2) {
+                System.out.println("Digite o valor a ser sacado:");
+                Scanner sacarDinheiro = new Scanner(System.in);
+                saque = sacarDinheiro.nextDouble();
+                if(saque <= saldo){
+                    saldo = saldo - saque;
+                    System.out.println(saldo);
+                } else {
+                    System.out.println("Saldo Insuficiente!");
+                }
+        } else if (opcao == 3){
+                System.out.println("Digite o valor a ser inserido:");
+                Scanner depositarSaldo =  new Scanner(System.in);
+                deposito = depositarSaldo.nextDouble();
+                saldo = deposito + saldo;
+                System.out.println(saldo);
+            } else {
+                System.out.println("Em breve");
+            }
         }
     }
 }
